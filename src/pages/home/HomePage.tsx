@@ -35,8 +35,9 @@ function HomePage() {
 					</ul>
 				</header>
 
+			<h2>User Information</h2>
 			{users.map((user) => (
-				<UserInfo key={user.id} user={user} />
+				<UserInfo key={user.id} user={{ ...user, profession: 'Programmer' }} />
 			))}
 
 
