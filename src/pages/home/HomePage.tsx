@@ -1,13 +1,27 @@
-import { Suspense } from "react"
-import Cover from "../../components/home/Cover"
+import { useEffect, useState } from "react";
+import { getUsers } from "../../api/users";
+import UserInfo from "../../components/users/UserInfo";
+import { IUser } from "../../interfaces/IUser";
 
 function HomePage() {
+	const [users, setUsers] = useState<IUser[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(true);
 
 
+	useEffect(() => {
+		const loadUsers = async () => {
+			const response = await getUsers();
+			setUsers(response);
+			setIsLoading(false);
+		};
+
+		loadUsers();
+	}, []);
+
+	if (isLoading) return <div>Loading...</div>
 	return (
 		<>
 
-			<Suspense fallback={<div>Loading...</div>}>
 				<h1>React - Home Page</h1>
 
 				<header>
@@ -20,13 +34,10 @@ function HomePage() {
 						</li>
 					</ul>
 				</header>
-			</Suspense>
 
-			<Cover
-				title="Estem a la Home Page"
-				description="Aquesta és la descripció de la pàgina d'inici."
-				imageUrl="https://images.icon-icons.com/2699/PNG/512/reactjs_logo_icon_170805.png"
-			/>
+			{users.map((user) => (
+				<UserInfo key={user.id} user={user} />
+			))}
 
 
 		</>
