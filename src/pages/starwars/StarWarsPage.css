@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;700;800&display=swap");
+
+.starwars-page {
+	position: relative;
+	min-height: 100svh;
+	padding: 0 24px 64px;
+	color: #d6e8ff;
+	background:
+		radial-gradient(1100px 600px at 35% 20%, rgba(43, 71, 146, 0.2), rgba(3, 13, 31, 0) 64%),
+		linear-gradient(180deg, #030d1f 0%, #020817 100%);
+	overflow: hidden;
+}
+
+.starwars-page::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+		radial-gradient(circle at 10% 14%, rgba(255, 255, 255, 0.72) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 27% 28%, rgba(192, 216, 247, 0.42) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 43% 10%, rgba(255, 255, 255, 0.6) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 65% 16%, rgba(152, 203, 255, 0.46) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 87% 30%, rgba(255, 255, 255, 0.62) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 16% 60%, rgba(255, 255, 255, 0.4) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 54% 58%, rgba(255, 255, 255, 0.4) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 76% 68%, rgba(120, 184, 244, 0.38) 0 1px, transparent 1.8px);
+	opacity: 0.72;
+	animation: starwars-pulse-stars 7s ease-in-out infinite;
+	pointer-events: none;
+}
+
+.starwars-nav {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 1140px;
+	height: 72px;
+	margin: 0 auto;
+	border-bottom: 1px solid rgba(74, 155, 229, 0.2);
+}
+
+.starwars-brand {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-family: "Orbitron", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.starwars-brand__icon {
+	color: #4ec3ff;
+	font-size: 18px;
+	filter: drop-shadow(0 0 6px rgba(78, 195, 255, 0.5));
+}
+
+.starwars-brand__text {
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	line-height: 1.1;
+}
+
+.starwars-brand__text span:last-child {
+	color: #ffd13d;
+}
+
+.starwars-nav__links {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	font-family: "Exo 2", sans-serif;
+}
+
+.starwars-nav__links a {
+	text-decoration: none;
+	color: #98adc8;
+	font-size: 0.97rem;
+	font-weight: 600;
+	padding: 8px 16px;
+	border-radius: 12px;
+	border: 1px solid transparent;
+	transition: all 180ms ease;
+}
+
+.starwars-nav__links a:hover {
+	color: #cde8ff;
+	border-color: rgba(90, 174, 240, 0.35);
+	background-color: rgba(14, 57, 103, 0.28);
+}
+
+.starwars-nav__links a.is-active {
+	color: #54caff;
+	border-color: #34b8ff;
+	background-color: rgba(7, 48, 84, 0.25);
+	box-shadow: 0 0 0 1px rgba(27, 162, 255, 0.16) inset;
+}
+
+.starwars-title-block {
+	margin-bottom: 28px;
+}
+
+.starwars-kicker {
+	margin-bottom: 10px;
+	font-family: "Orbitron", sans-serif;
+	font-size: 0.86rem;
+	letter-spacing: 0.2em;
+	color: #34b8ff;
+}
+
+.starwars-title {
+	margin: 0;
+	font-family: "Orbitron", sans-serif;
+	font-size: clamp(2.2rem, 5.2vw, 4rem);
+	line-height: 1.02;
+	color: #ddebff;
+}
+
+.starwars-subtitle {
+	margin-top: 14px;
+	max-width: 760px;
+	font-family: "Exo 2", sans-serif;
+	font-size: clamp(1rem, 1.3vw, 1.35rem);
+	line-height: 1.45;
+	color: rgba(195, 214, 241, 0.88);
+}
+
+.starwars-filter-card {
+	padding: 20px;
+	margin-bottom: 24px;
+	border-radius: 12px;
+	border: 1px solid rgba(46, 95, 151, 0.36);
+	background-color: rgba(13, 23, 41, 0.8);
+}
+
+.starwars-filter-grid {
+	display: grid;
+	grid-template-columns: 1.6fr 1.2fr 1.2fr auto;
+	gap: 14px;
+	align-items: center;
+}
+
+.starwars-input .MuiInputBase-root {
+	color: #c8ddff;
+	background-color: rgba(10, 19, 35, 0.9);
+}
+
+.starwars-input .MuiOutlinedInput-notchedOutline {
+	border-color: rgba(80, 126, 180, 0.45);
+}
+
+.starwars-input .MuiSvgIcon-root,
+.starwars-input .MuiInputAdornment-root {
+	color: #88a6cf;
+}
+
+.starwars-clear {
+	color: #8ca8cf;
+	font-family: "Exo 2", sans-serif;
+	font-weight: 700;
+	text-transform: none;
+	padding: 8px 10px;
+	min-width: fit-content;
+}
+
+.starwars-clear:hover {
+	background-color: rgba(53, 80, 118, 0.18);
+}
+
+.starwars-total {
+	margin-top: 12px;
+	font-family: "Exo 2", sans-serif;
+	font-size: 0.94rem;
+	color: #7f9ac0;
+}
+
+.starwars-table-wrap {
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid rgba(46, 95, 151, 0.36);
+	background-color: rgba(13, 23, 41, 0.86);
+}
+
+.starwars-table-wrap .MuiTableCell-root {
+	font-family: "Exo 2", sans-serif;
+	border-bottom-color: rgba(94, 124, 163, 0.32);
+	color: #d2e4ff;
+}
+
+.starwars-table-wrap .MuiTableHead-root .MuiTableCell-root {
+	font-weight: 700;
+	font-size: 0.95rem;
+	background: linear-gradient(180deg, rgba(21, 41, 65, 0.85), rgba(16, 31, 52, 0.85));
+	color: #bfdcff;
+}
+
+.starwars-row {
+	cursor: pointer;
+	transition: background-color 160ms ease;
+}
+
+.starwars-row:hover {
+	background-color: rgba(35, 63, 96, 0.28);
+}
+
+.starwars-name-cell {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-weight: 700;
+}
+
+.starwars-avatar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	font-size: 10px;
+	letter-spacing: -1px;
+	font-weight: 800;
+	color: #93ddff;
+	background: radial-gradient(circle at 30% 30%, #1b5788, #0d2742);
+	box-shadow: inset 0 0 0 1px rgba(107, 171, 224, 0.28);
+}
+
+.starwars-chip {
+	font-family: "Exo 2", sans-serif;
+	font-weight: 700;
+	font-size: 0.75rem;
+	border-width: 1px;
+	border-style: solid;
+	background-color: transparent;
+}
+
+.starwars-chip--male {
+	color: #3cbcfd;
+	border-color: rgba(60, 188, 253, 0.6);
+}
+
+.starwars-chip--female {
+	color: #f4cc4b;
+	border-color: rgba(244, 204, 75, 0.6);
+}
+
+@media (max-width: 900px) {
+	.starwars-page {
+		padding-inline: 16px;
+	}
+
+	.starwars-nav {
+		height: auto;
+		padding: 12px 0;
+		align-items: flex-start;
+		gap: 14px;
+		flex-direction: column;
+	}
+
+	.starwars-filter-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.starwars-clear {
+		justify-content: flex-start;
+	}
+}
+
+@keyframes starwars-pulse-stars {
+	0%,
+	100% {
+		opacity: 0.56;
+	}
+	50% {
+		opacity: 0.74;
+	}
+}

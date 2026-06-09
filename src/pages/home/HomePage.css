@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600&family=Orbitron:wght@500;700;800&display=swap");
+
+.home-page {
+	position: relative;
+	min-height: 100svh;
+	padding: 0 24px 64px;
+	color: #d8e8ff;
+	background:
+		radial-gradient(1200px 620px at 30% 30%, rgba(75, 46, 145, 0.42), rgba(3, 10, 29, 0) 60%),
+		radial-gradient(900px 580px at 58% 48%, rgba(32, 54, 133, 0.26), rgba(2, 9, 24, 0) 66%),
+		linear-gradient(180deg, #030d1f 0%, #020817 100%);
+	overflow: hidden;
+}
+
+.home-page::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+		radial-gradient(circle at 8% 14%, rgba(255, 255, 255, 0.88) 0 1px, transparent 1.6px),
+		radial-gradient(circle at 26% 30%, rgba(196, 221, 255, 0.48) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 48% 21%, rgba(255, 255, 255, 0.55) 0 1.2px, transparent 2px),
+		radial-gradient(circle at 64% 8%, rgba(151, 214, 255, 0.54) 0 1px, transparent 1.7px),
+		radial-gradient(circle at 84% 22%, rgba(255, 255, 255, 0.62) 0 1px, transparent 1.7px),
+		radial-gradient(circle at 17% 58%, rgba(255, 255, 255, 0.48) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 37% 64%, rgba(128, 190, 255, 0.34) 0 1.1px, transparent 2px),
+		radial-gradient(circle at 71% 56%, rgba(255, 255, 255, 0.46) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 92% 66%, rgba(153, 204, 255, 0.43) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 54% 82%, rgba(255, 255, 255, 0.35) 0 1px, transparent 1.8px);
+	opacity: 0.72;
+	animation: pulse-stars 6s ease-in-out infinite;
+	pointer-events: none;
+}
+
+.home-page::after {
+	content: "";
+	position: absolute;
+	right: -170px;
+	bottom: -210px;
+	width: min(46vw, 680px);
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background:
+		radial-gradient(circle at 36% 36%, rgba(83, 96, 126, 0.28), rgba(14, 20, 38, 0.94) 68%),
+		conic-gradient(from 184deg, rgba(132, 171, 255, 0.12), rgba(0, 0, 0, 0) 28%, rgba(102, 145, 255, 0.1) 62%, rgba(0, 0, 0, 0));
+	box-shadow: inset -30px -45px 90px rgba(0, 0, 0, 0.62);
+	filter: blur(0.2px);
+	opacity: 0.95;
+	pointer-events: none;
+}
+
+.home-nav {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 1140px;
+	height: 72px;
+	margin: 0 auto;
+	border-bottom: 1px solid rgba(74, 155, 229, 0.2);
+}
+
+.home-brand {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-family: "Orbitron", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.home-brand__icon {
+	color: #4ec3ff;
+	font-size: 18px;
+	filter: drop-shadow(0 0 6px rgba(78, 195, 255, 0.5));
+}
+
+.home-brand__text {
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	line-height: 1.1;
+}
+
+.home-brand__text span:last-child {
+	color: #ffd13d;
+}
+
+.home-nav__links {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	font-family: "Exo 2", sans-serif;
+}
+
+.home-nav__links a {
+	text-decoration: none;
+	color: #98adc8;
+	font-size: 0.97rem;
+	font-weight: 600;
+	padding: 8px 16px;
+	border-radius: 12px;
+	border: 1px solid transparent;
+	transition: all 180ms ease;
+}
+
+.home-nav__links a:hover {
+	color: #cde8ff;
+	border-color: rgba(90, 174, 240, 0.35);
+	background-color: rgba(14, 57, 103, 0.28);
+}
+
+.home-nav__links a.is-active {
+	color: #54caff;
+	border-color: #34b8ff;
+	background-color: rgba(7, 48, 84, 0.25);
+	box-shadow: 0 0 0 1px rgba(27, 162, 255, 0.16) inset;
+}
+
+.home-hero {
+	position: relative;
+	z-index: 1;
+	width: min(100%, 1140px);
+	margin: 0 auto;
+	padding-top: clamp(72px, 10vw, 114px);
+	padding-left: clamp(0px, 3vw, 36px);
+	max-width: 1140px;
+}
+
+.home-chip {
+	display: inline-flex;
+	align-items: center;
+	margin: 0 0 24px;
+	padding: 8px 14px;
+	border-radius: 999px;
+	border: 1px solid rgba(80, 182, 255, 0.6);
+	background-color: rgba(4, 45, 94, 0.2);
+	color: #6eceff;
+	font-family: "Exo 2", sans-serif;
+	font-weight: 600;
+	font-size: 0.98rem;
+}
+
+.home-hero h1 {
+	margin: 0;
+	font-family: "Orbitron", sans-serif;
+	font-size: clamp(3rem, 8.7vw, 5.8rem);
+	line-height: 0.92;
+	letter-spacing: 0.01em;
+	color: #dfedff;
+	text-shadow: 0 8px 40px rgba(18, 65, 115, 0.45);
+}
+
+.home-hero h2 {
+	max-width: 760px;
+	margin: 26px 0 0;
+	font-family: "Exo 2", sans-serif;
+	font-size: clamp(1.6rem, 3.2vw, 2.45rem);
+	line-height: 1.2;
+	font-weight: 500;
+	color: #ffd047;
+}
+
+.home-description {
+	max-width: 720px;
+	margin: 24px 0 0;
+	font-family: "Exo 2", sans-serif;
+	font-size: clamp(1rem, 1.35vw, 1.36rem);
+	line-height: 1.5;
+	color: rgba(196, 214, 240, 0.88);
+}
+
+.home-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-top: 34px;
+}
+
+.home-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 26px;
+	text-decoration: none;
+	font-family: "Exo 2", sans-serif;
+	font-size: 1.04rem;
+	font-weight: 700;
+	border-radius: 12px;
+	border: 1px solid transparent;
+	transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease, border-color 200ms ease;
+}
+
+.home-button:hover {
+	transform: translateY(-2px);
+}
+
+.home-button--primary {
+	color: #04243f;
+	background: linear-gradient(180deg, #57ccff 0%, #2db7ff 100%);
+	box-shadow: 0 12px 28px rgba(28, 150, 228, 0.26);
+}
+
+.home-button--primary:hover {
+	box-shadow: 0 15px 30px rgba(28, 150, 228, 0.34);
+}
+
+.home-button--ghost {
+	color: #f5c94f;
+	border-color: rgba(245, 201, 79, 0.45);
+	background-color: rgba(34, 27, 9, 0.2);
+}
+
+.home-button--ghost:hover {
+	border-color: rgba(245, 201, 79, 0.78);
+	background-color: rgba(74, 53, 5, 0.3);
+}
+
+@keyframes pulse-stars {
+	0%,
+	100% {
+		opacity: 0.55;
+	}
+	50% {
+		opacity: 0.78;
+	}
+}
+
+@media (max-width: 900px) {
+	.home-page {
+		padding-inline: 16px;
+	}
+
+	.home-nav {
+		height: auto;
+		padding: 12px 0;
+		align-items: flex-start;
+		gap: 14px;
+		flex-direction: column;
+	}
+
+	.home-hero {
+		padding-top: 48px;
+	}
+
+	.home-description {
+		max-width: 100%;
+	}
+
+	.home-page::after {
+		right: -230px;
+		bottom: -250px;
+		width: 82vw;
+		opacity: 0.6;
+	}
+}
