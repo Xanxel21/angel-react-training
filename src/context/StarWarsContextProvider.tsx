@@ -11,13 +11,14 @@ interface StarWarsContextProps {
     handleCharacters: ( chars: IStarWarsCharacter[] ) => void;
 }
 
-export const StarWarsContext = createContext<StarWarsContextProps>(null);
+// eslint-disable-next-line react-refresh/only-export-components
+export const StarWarsContext = createContext<StarWarsContextProps>({} as StarWarsContextProps);
 
 export const StarWarsContextProvider = ({ children }: PropsWithChildren) => {
-    const [ characters, setCharacters ] = useState<IStarWarsCharacter[]>(null);
+    const [ characters, setCharacters ] = useState<IStarWarsCharacter[]>([]);
     const [ theme , setTheme ] = useState<ThemeType>(() => {
         const storedTheme = localStorage.getItem('SWTheme');
-        return storedTheme;
+        return (storedTheme as ThemeType) || 'light';
     })
 
     const handleCharacters = ( chars: IStarWarsCharacter[] ) => {
