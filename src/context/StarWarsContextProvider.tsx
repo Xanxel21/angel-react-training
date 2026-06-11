@@ -1,18 +1,6 @@
-import { createContext, PropsWithChildren, useState, Dispatch, SetStateAction } from "react";
+import { PropsWithChildren, useState } from "react";
 import { IStarWarsCharacter } from "../interfaces/IStarWarsCharacter";
-
-type ThemeType = 'light' | 'dark'
-
-interface StarWarsContextProps {
-    characters: IStarWarsCharacter[];
-    setCharacters: Dispatch<SetStateAction<IStarWarsCharacter[]>>;
-    theme: ThemeType;
-    setTheme:  Dispatch<SetStateAction<ThemeType>>;
-    handleCharacters: ( chars: IStarWarsCharacter[] ) => void;
-}
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const StarWarsContext = createContext<StarWarsContextProps>({} as StarWarsContextProps);
+import { StarWarsContext, ThemeType } from "./StarWarsContext";
 
 export const StarWarsContextProvider = ({ children }: PropsWithChildren) => {
     const [ characters, setCharacters ] = useState<IStarWarsCharacter[]>([]);

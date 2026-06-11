@@ -1,18 +1,27 @@
-
-
-import { Container, Box, Typography, Alert, Paper, TextField, InputAdornment, FormControl, Select, MenuItem, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Chip } from '@mui/material';
+import { 
+	Container, 
+	Box, 
+	Typography, 
+	Paper, 
+	TextField, 
+	InputAdornment, 
+	FormControl, 
+	Select, 
+	MenuItem, 
+	Button, 
+	TableContainer, 
+	Table, 
+	TableHead, 
+	TableRow, 
+	TableCell, 
+	TableBody, 
+	Chip 
+} from '@mui/material';
 import { useStarWars } from '../../../hooks/useStarWars';
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router';
 
-import { IStarWarsCharacter } from '../../../interfaces/IStarWarsCharacter';
-interface StarWarsPageProps {
-	characters: IStarWarsCharacter[];
-}
-
-export default function StarWarsTable({
-	characters
-}: StarWarsPageProps) {
+export default function StarWarsTable() {
 	const navigate = useNavigate();
 	const {
 		searchTerm,
@@ -25,10 +34,7 @@ export default function StarWarsTable({
 		handleGenderfilter,
 		handleEyeColor,
 		resetFilters,
-		error,
 	} = useStarWars();
-
-	console.log(characters);
 
 	const characterIdByUrl = useMemo(() => {
 		const map = new Map<string, string>();
@@ -72,8 +78,6 @@ export default function StarWarsTable({
 					ver su ficha completa.
 				</Typography>
 			</Box>
-
-			{error ? <Alert severity="error">{error}</Alert> : null}
 
 			<Paper className="starwars-filter-card" elevation={0}>
 				<div className="starwars-filter-grid">

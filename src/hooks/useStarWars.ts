@@ -1,17 +1,14 @@
-import { useEffect, useState, useMemo } from "react";
-import type { SelectChangeEvent } from "@mui/material/Select";
-import { getStarWarsCharacters } from "../api/starwars";
-import { IStarWarsCharacter } from "../interfaces/IStarWarsCharacter";
+import { useMemo, useState, use } from "react";
+import { SelectChangeEvent } from "@mui/material/Select";
+import { StarWarsContext } from "../context/StarWarsContext";
 
 type CharacterGenderFilter = "all" | "male" | "female" | "other";
 
 export const useStarWars = () => {
-	const [characters, setCharacters] = useState<IStarWarsCharacter[]>([]);
+	const { characters } = use(StarWarsContext);
 	const [searchTerm, setSearchTerm] = useState("");
 	const [genderFilter, setGenderFilter] = useState<CharacterGenderFilter>("all");
 	const [eyeColorFilter, setEyeColorFilter] = useState("all");
-	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState<string | null>(null);
 
 	const normalizeValue = (value: string) => {
 		if (!value || value.toLowerCase() === "unknown" || value.toLowerCase() === "n/a") {
@@ -91,25 +88,6 @@ export const useStarWars = () => {
 		setEyeColorFilter("all");
 	};
 
-	useEffect(() => {
-		const loadCharacters = async () => {
-			try {
-				setIsLoading(true);
-				const response = await getStarWarsCharacters();
-				if (response) {
-					setCharacters(response);
-				}
-			} catch (caughtError) {
-				setError(caughtError instanceof Error ? caughtError.message : "Ha ocurrido un error inesperado.");
-			} finally {
-				setIsLoading(false);
-			}
-		};
-
-		loadCharacters();
-
-	}, []);
-
 	return {
 		characters,
 		searchTerm,
@@ -122,7 +100,5 @@ export const useStarWars = () => {
 		handleGenderfilter,
 		handleEyeColor,
 		resetFilters,
-		isLoading,
-		error,
 	};
 };

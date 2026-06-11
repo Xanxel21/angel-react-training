@@ -9,3 +9,13 @@ export const getStarWarsCharacters = async (): Promise<IStarWarsCharacter[]> => 
 
 	return (await response.json()) as IStarWarsCharacter[];
 };
+
+export const getStarWarsCharacterById = async (id: number): Promise<IStarWarsCharacter> => {
+	const response = await fetch(`https://swapi.info/api/people/${id}`);
+
+	if (!response.ok) {
+		throw new Error("No se ha podido cargar la información del personaje de Star Wars.");
+	}
+
+	return (await response.json()) as IStarWarsCharacter;
+};

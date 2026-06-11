@@ -9,8 +9,8 @@ import {
 	Container,
 	Typography,
 } from "@mui/material";
-import { getStarWarsCharacters } from "../../api/starwars";
-import type { IStarWarsCharacter } from "../../interfaces/IStarWarsCharacter";
+import { getStarWarsCharacterById } from "../../api/starwars";
+import { IStarWarsCharacter } from "../../interfaces/IStarWarsCharacter";
 import "./StarWarsDetailPage.css";
 
 type LocationState = {
@@ -37,11 +37,6 @@ const normalizeValue = (value: string) => {
 	}
 
 	return value;
-};
-
-const getCharacterIdFromUrl = (url: string) => {
-	const match = url.match(/\/(\d+)\/?$/);
-	return match?.[1] ?? null;
 };
 
 function StarWarsDetailPage() {
@@ -73,16 +68,14 @@ function StarWarsDetailPage() {
 		const loadCharacter = async () => {
 			try {
 				setIsLoading(true);
-				const allCharacters = await getStarWarsCharacters();
-				const foundCharacter = allCharacters.find(
-					(item) => getCharacterIdFromUrl(item.url) === characterId,
-				);
+				const parsedCharacterId = Number.parseInt(characterId, 10);
 
-				if (!foundCharacter) {
-					setError("No se ha encontrado el personaje solicitado.");
+				if (Number.isNaN(parsedCharacterId)) {
+					setError("El identificador del personaje no es valido.");
 					return;
 				}
 
+				const foundCharacter = await getStarWarsCharacterById(parsedCharacterId);
 				setCharacter(foundCharacter);
 			} catch (caughtError) {
 				setError(caughtError instanceof Error ? caughtError.message : "Ha ocurrido un error inesperado.");
