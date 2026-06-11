@@ -1,0 +1,144 @@
+.starwars-detail-page {
+	padding-top: 28px;
+	padding-bottom: 64px;
+}
+
+.starwars-detail-back {
+	color: #42bfff;
+	font-family: "Exo 2", sans-serif;
+	font-weight: 700;
+	text-transform: none;
+	margin-bottom: 20px;
+}
+
+.starwars-detail-back:hover {
+	background-color: rgba(39, 92, 140, 0.24);
+}
+
+.starwars-detail-card {
+	border-radius: 16px;
+	overflow: hidden;
+	border: 1px solid rgba(59, 108, 160, 0.35);
+	background: linear-gradient(180deg, rgba(12, 26, 46, 0.9), rgba(10, 20, 37, 0.95));
+	box-shadow: 0 20px 48px rgba(1, 6, 16, 0.48);
+}
+
+.starwars-detail-hero {
+	display: flex;
+	align-items: center;
+	gap: 22px;
+	padding: 28px;
+	border-bottom: 1px solid rgba(57, 102, 153, 0.3);
+	background: linear-gradient(94deg, rgba(24, 54, 85, 0.8) 0%, rgba(26, 33, 43, 0.68) 100%);
+}
+
+.starwars-detail-avatar {
+	width: 78px;
+	height: 78px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	font-size: 26px;
+	font-weight: 700;
+	color: #5bc9ff;
+	border: 2px solid rgba(76, 194, 255, 0.9);
+	background: radial-gradient(circle at 30% 28%, rgba(47, 147, 204, 0.45), rgba(9, 39, 69, 0.2));
+}
+
+.starwars-detail-name {
+	margin: 0;
+	font-family: "Orbitron", sans-serif;
+	font-size: clamp(2rem, 3vw, 2.65rem);
+	line-height: 1.05;
+	color: #e1f0ff;
+}
+
+.starwars-detail-tags {
+	display: flex;
+	gap: 10px;
+	margin-top: 12px;
+	flex-wrap: wrap;
+}
+
+.starwars-detail-chip {
+	border: 1px solid rgba(61, 180, 250, 0.74);
+	background-color: rgba(11, 42, 74, 0.3);
+	color: #66cbff;
+	font-family: "Exo 2", sans-serif;
+	font-weight: 700;
+}
+
+.starwars-detail-chip--gold {
+	border-color: rgba(248, 205, 64, 0.75);
+	background-color: rgba(83, 68, 16, 0.18);
+	color: #f6d14f;
+}
+
+.starwars-detail-section {
+	padding: 28px;
+}
+
+.starwars-detail-section-title {
+	margin: 0 0 16px;
+	font-family: "Orbitron", sans-serif;
+	font-size: 0.9rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: #36beff;
+}
+
+.starwars-detail-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 14px;
+}
+
+.starwars-detail-item {
+	border-radius: 16px;
+	padding: 16px 16px 14px;
+	border: 1px solid rgba(60, 95, 136, 0.35);
+	background: linear-gradient(180deg, rgba(23, 35, 55, 0.5), rgba(18, 27, 43, 0.7));
+}
+
+.starwars-detail-item-label {
+	font-family: "Exo 2", sans-serif;
+	font-size: 0.86rem;
+	color: #79a8d7;
+}
+
+.starwars-detail-item-value {
+	margin-top: 6px;
+	font-family: "Exo 2", sans-serif;
+	font-weight: 700;
+	font-size: 1.35rem;
+	color: #eef6ff;
+}
+
+@media (max-width: 900px) {
+	.starwars-detail-hero {
+		padding: 20px;
+	}
+
+	.starwars-detail-section {
+		padding: 20px;
+	}
+
+	.starwars-detail-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 640px) {
+	.starwars-detail-hero {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.starwars-detail-name {
+		font-size: clamp(1.7rem, 8vw, 2.2rem);
+	}
+
+	.starwars-detail-grid {
+		grid-template-columns: 1fr;
+	}
+}

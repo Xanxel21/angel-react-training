@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const PublicLayout = () => {
     return (
@@ -13,10 +13,13 @@ const PublicLayout = () => {
 				</div>
 
 				<nav className="starwars-nav__links" aria-label="Navegacion principal">
-					<Link to="/">Inicio</Link>
-					<Link to="/starwars" className="is-active">
+					<NavLink to="/" className={({ isActive }) => (isActive ? "is-active" : "")}
+						end>
+						Inicio
+					</NavLink>
+					<NavLink to="/starwars" className={({ isActive }) => (isActive ? "is-active" : "")}>
 						Archivo Jedi
-					</Link>
+					</NavLink>
 				</nav>
 			</header>
 

@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import {
 	Alert,
 	Box,
@@ -21,33 +22,8 @@ import {
 	Chip,
 } from "@mui/material";
 import { useStarWars } from "../../hooks/useStarWars";
-import type { IStarWarsCharacter } from "../../interfaces/IStarWarsCharacter";
-import StarWarsCharacterModal from "../../components/starwars/StarWarsCharacterModal";
 import "./StarWarsPage.css";
-
-type CharacterGenderFilter = "all" | "male" | "female" | "other";
-
-const normalizeValue = (value: string) => {
-	if (!value || value.toLowerCase() === "unknown" || value.toLowerCase() === "n/a") {
-		return "Desconocido";
-	}
-
-	return value;
-};
-
-const toGenderFilter = (gender: string): CharacterGenderFilter => {
-	const normalizedGender = gender.toLowerCase();
-
-	if (normalizedGender === "male") {
-		return "male";
-	}
-
-	if (normalizedGender === "female") {
-		return "female";
-	}
-
-	return "other";
-};
+// import { StarWarsContext } from "../../context/StarWarsContextProvider";
 
 const toGenderLabel = (gender: string) => {
 	const normalizedGender = gender.toLowerCase();
@@ -64,66 +40,34 @@ const toGenderLabel = (gender: string) => {
 };
 
 function StarWarsPage() {
-	const { characters, setCharacters, isLoading, error } = useStarWars();
-	const [selectedCharacter, setSelectedCharacter] = useState<IStarWarsCharacter | null>(null);
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [searchTerm, setSearchTerm] = useState("");
-	const [genderFilter, setGenderFilter] = useState<CharacterGenderFilter>("all");
-	const [eyeColorFilter, setEyeColorFilter] = useState("all");
+	const navigate = useNavigate();
+	const {
+		searchTerm,
+		genderFilter,
+		eyeColorFilter,
+		eyeColorOptions,
+		filteredCharacters,
+		normalizeValue,
+		handleSearchTerm,
+		handleGenderfilter,
+		handleEyeColor,
+		resetFilters,
+		isLoading,
+		error,
+	} = useStarWars();
 
-	const eyeColorOptions = useMemo(() => {
-		const values = new Set<string>();
+	const characterIdByUrl = useMemo(() => {
+		const map = new Map<string, string>();
 
-		characters.forEach((character) => {
-			values.add(normalizeValue(character.eye_color));
+		filteredCharacters.forEach((character) => {
+			const match = character.url.match(/\/(\d+)\/?$/);
+			if (match?.[1]) {
+				map.set(character.url, match[1]);
+			}
 		});
 
-		return Array.from(values).sort((a, b) => a.localeCompare(b));
-	}, [characters]);
-
-	const filteredCharacters = useMemo(() => {
-		const normalizedTerm = searchTerm.trim().toLowerCase();
-
-		return [...characters]
-			.filter((character) => {
-				if (!normalizedTerm) {
-					return true;
-				}
-
-				return character.name.toLowerCase().includes(normalizedTerm);
-			})
-			.filter((character) => {
-				if (genderFilter === "all") {
-					return true;
-				}
-
-				return toGenderFilter(character.gender) === genderFilter;
-			})
-			.filter((character) => {
-				if (eyeColorFilter === "all") {
-					return true;
-				}
-
-				return normalizeValue(character.eye_color) === eyeColorFilter;
-			})
-			.sort((a, b) => a.name.localeCompare(b.name));
-	}, [characters, eyeColorFilter, genderFilter, searchTerm]);
-
-	const handleOpenModal = (character: IStarWarsCharacter) => {
-		setSelectedCharacter(character);
-		setIsModalOpen(true);
-	};
-
-	const handleCloseModal = () => {
-		setIsModalOpen(false);
-		setSelectedCharacter(null);
-	};
-
-	const resetFilters = () => {
-		setSearchTerm("");
-		setGenderFilter("all");
-		setEyeColorFilter("all");
-	};
+		return map;
+	}, [filteredCharacters]);
 
 	if (isLoading) {
 		return (
@@ -163,7 +107,7 @@ function StarWarsPage() {
 						<TextField
 							placeholder="Buscar personaje..."
 							value={searchTerm}
-							onChange={(event) => setSearchTerm(event.target.value)}
+							onChange={handleSearchTerm}
 							fullWidth
 							className="starwars-input"
 							slotProps={{
@@ -177,7 +121,7 @@ function StarWarsPage() {
 							<Select
 								displayEmpty
 								value={genderFilter}
-								onChange={(event) => setGenderFilter(event.target.value as CharacterGenderFilter)}
+								onChange={handleGenderfilter}
 							>
 								<MenuItem value="all">Genero - Todos</MenuItem>
 								<MenuItem value="male">Masculino</MenuItem>
@@ -190,7 +134,7 @@ function StarWarsPage() {
 							<Select
 								displayEmpty
 								value={eyeColorFilter}
-								onChange={(event) => setEyeColorFilter(event.target.value)}
+								onChange={handleEyeColor}
 							>
 								<MenuItem value="all">Color de ojos - Todos</MenuItem>
 								{eyeColorOptions.map((eyeColor) => (
@@ -221,18 +165,19 @@ function StarWarsPage() {
 								<TableCell align="right">Altura (cm)</TableCell>
 								<TableCell align="right">Masa (kg)</TableCell>
 								<TableCell>Nacimiento</TableCell>
+								<TableCell align="right">Acciones</TableCell>
 							</TableRow>
 						</TableHead>
 
 						<TableBody>
 							{filteredCharacters.map((character) => {
 								const genderLabel = toGenderLabel(character.gender);
+								const characterId = characterIdByUrl.get(character.url);
 
 								return (
 									<TableRow
 										key={character.url}
 										hover
-										onClick={() => handleOpenModal(character)}
 										className="starwars-row"
 									>
 										<TableCell className="starwars-name-cell">
@@ -256,6 +201,24 @@ function StarWarsPage() {
 										<TableCell align="right">{normalizeValue(character.height)}</TableCell>
 										<TableCell align="right">{normalizeValue(character.mass)}</TableCell>
 										<TableCell>{normalizeValue(character.birth_year)}</TableCell>
+										<TableCell align="right">
+											<Button
+												variant="outlined"
+												size="small"
+												disabled={!characterId}
+												onClick={() => {
+													if (!characterId) {
+														return;
+													}
+
+													navigate(`/starwars/${characterId}`, {
+														state: { character },
+													});
+												}}
+											>
+												Ver detalle
+											</Button>
+										</TableCell>
 									</TableRow>
 								);
 							})}
@@ -263,12 +226,6 @@ function StarWarsPage() {
 					</Table>
 				</TableContainer>
 			</Container>
-
-			<StarWarsCharacterModal
-				open={isModalOpen}
-				character={selectedCharacter}
-				onClose={handleCloseModal}
-			/>
 		</>
 	);
 }

@@ -1,8 +1,8 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import PublicLayout from "../layouts/PublicLayout";
 import HomePage from "../pages/home/HomePage";
-import FormPage from "../pages/form/FormPage";
 import StarWarsPage from "../pages/starwars/StarWarsPage";
+import StarWarsDetailPage from "../pages/starwars/StarWarsDetailPage";
 
 
 export const router = createBrowserRouter([
@@ -17,12 +17,12 @@ export const router = createBrowserRouter([
 				element: <HomePage />,
 			},
 			{
-				path: "/form",
-				element: <FormPage />,
-			},
-			{
 				path: "/starwars",
 				element: <StarWarsPage />,
+			},
+			{
+				path: "/starwars/:characterId",
+				element: <StarWarsDetailPage />,
 			},
 		],
 	},
