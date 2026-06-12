@@ -1,12 +1,11 @@
 import { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import rebelLogo from "../assets/Rebel logo.png";
-import empireLogo from "../assets/Empire logo.png";
 import { StarWarsContext } from "../context/StarWarsContext";
+import ThemeSwitcher from "../components/ui/ThemeSwitcher";
 import "../pages/starwars/StarWarsPage.css";
 
 const PublicLayout = () => {
-    const { theme, setTheme } = useContext(StarWarsContext);
+	const { theme } = useContext(StarWarsContext);
 
     return (
         <div className={`starwars-page ${theme === "light" ? "theme-republic" : "theme-empire"}`}>
@@ -30,26 +29,7 @@ const PublicLayout = () => {
 						</NavLink>
 					</nav>
 
-					<div className="starwars-theme-switch" role="group" aria-label="Selector de tema">
-						<button
-							type="button"
-							className={`starwars-theme-switch__option ${theme === "light" ? "is-selected" : ""}`}
-							onClick={() => setTheme("light")}
-							aria-pressed={theme === "light"}
-						>
-							<img src={rebelLogo} alt="" aria-hidden="true" />
-							<span>Republica</span>
-						</button>
-						<button
-							type="button"
-							className={`starwars-theme-switch__option ${theme === "dark" ? "is-selected" : ""}`}
-							onClick={() => setTheme("dark")}
-							aria-pressed={theme === "dark"}
-						>
-							<img src={empireLogo} alt="" aria-hidden="true" />
-							<span>Imperio</span>
-						</button>
-					</div>
+					<ThemeSwitcher />
 				</div>
 			</header>
 
