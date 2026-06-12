@@ -1,4 +1,4 @@
-import type { IStarWarsCharacter } from "../interfaces/IStarWarsCharacter";
+import { IStarWarsCharacter } from "../interfaces/IStarWarsCharacter";
 
 export const getStarWarsCharacters = async (): Promise<IStarWarsCharacter[]> => {
 	const response = await fetch("https://swapi.info/api/people");

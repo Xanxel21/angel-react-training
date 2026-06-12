@@ -28,7 +28,6 @@ const PublicLayout = () => {
 							Archivo Jedi
 						</NavLink>
 					</nav>
-
 					<ThemeSwitcher />
 				</div>
 			</header>
