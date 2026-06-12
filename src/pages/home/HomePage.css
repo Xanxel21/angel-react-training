@@ -218,6 +218,132 @@
 	background-color: rgba(74, 53, 5, 0.3);
 }
 
+.theme-empire .home-page {
+	color: #f1d2d8;
+	background:
+		radial-gradient(1200px 620px at 30% 30%, rgba(138, 18, 48, 0.42), rgba(21, 3, 8, 0) 60%),
+		radial-gradient(900px 580px at 58% 48%, rgba(98, 13, 35, 0.34), rgba(17, 2, 6, 0) 66%),
+		linear-gradient(180deg, #12050a 0%, #070206 100%);
+}
+
+.theme-empire .home-page::before {
+	opacity: 0.56;
+	background-image:
+		radial-gradient(circle at 8% 14%, rgba(255, 210, 218, 0.74) 0 1px, transparent 1.6px),
+		radial-gradient(circle at 26% 30%, rgba(255, 147, 168, 0.42) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 48% 21%, rgba(255, 219, 226, 0.5) 0 1.2px, transparent 2px),
+		radial-gradient(circle at 64% 8%, rgba(255, 132, 154, 0.44) 0 1px, transparent 1.7px),
+		radial-gradient(circle at 84% 22%, rgba(255, 218, 227, 0.52) 0 1px, transparent 1.7px),
+		radial-gradient(circle at 17% 58%, rgba(255, 182, 195, 0.38) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 37% 64%, rgba(255, 121, 145, 0.34) 0 1.1px, transparent 2px),
+		radial-gradient(circle at 71% 56%, rgba(255, 206, 216, 0.4) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 92% 66%, rgba(255, 166, 184, 0.38) 0 1px, transparent 1.8px),
+		radial-gradient(circle at 54% 82%, rgba(255, 195, 205, 0.32) 0 1px, transparent 1.8px);
+}
+
+.theme-empire .home-page::after {
+	background:
+		radial-gradient(circle at 36% 36%, rgba(130, 34, 58, 0.44), rgba(39, 7, 15, 0.95) 68%),
+		conic-gradient(from 184deg, rgba(255, 139, 166, 0.18), rgba(0, 0, 0, 0) 28%, rgba(211, 57, 91, 0.16) 62%, rgba(0, 0, 0, 0));
+	box-shadow: inset -30px -45px 90px rgba(0, 0, 0, 0.66);
+	opacity: 0.95;
+}
+
+.theme-empire .home-chip {
+	border-color: rgba(241, 97, 131, 0.52);
+	background-color: rgba(121, 20, 46, 0.24);
+	color: #ff98ae;
+}
+
+.theme-empire .home-hero h1 {
+	color: #ffe0e6;
+	text-shadow: 0 8px 40px rgba(153, 27, 63, 0.38);
+}
+
+.theme-empire .home-hero h2 {
+	color: #ff8ba6;
+}
+
+.theme-empire .home-description {
+	color: rgba(236, 197, 208, 0.86);
+}
+
+.theme-empire .home-button--primary {
+	color: #fff1f4;
+	background: linear-gradient(180deg, #cb2f58 0%, #9f1f41 100%);
+	box-shadow: 0 12px 28px rgba(152, 26, 58, 0.34);
+}
+
+.theme-empire .home-button--primary:hover {
+	box-shadow: 0 15px 30px rgba(152, 26, 58, 0.42);
+}
+
+.theme-empire .home-button--ghost {
+	color: #ffc6d2;
+	border-color: rgba(241, 125, 154, 0.45);
+	background-color: rgba(98, 16, 35, 0.26);
+}
+
+.theme-empire .home-button--ghost:hover {
+	border-color: rgba(255, 156, 180, 0.72);
+	background-color: rgba(128, 22, 47, 0.34);
+}
+
+.theme-republic .home-page {
+	color: #13365a;
+	background:
+		radial-gradient(1200px 620px at 28% 28%, rgba(103, 183, 252, 0.38), rgba(226, 244, 255, 0) 60%),
+		radial-gradient(900px 580px at 56% 46%, rgba(120, 196, 255, 0.36), rgba(219, 239, 255, 0) 66%),
+		linear-gradient(180deg, #f7fbff 0%, #e6f1fb 100%);
+}
+
+.theme-republic .home-page::before {
+	opacity: 0.4;
+}
+
+.theme-republic .home-page::after {
+	background:
+		radial-gradient(circle at 36% 36%, rgba(182, 214, 244, 0.62), rgba(159, 194, 228, 0.92) 68%),
+		conic-gradient(from 184deg, rgba(132, 171, 255, 0.16), rgba(0, 0, 0, 0) 28%, rgba(102, 145, 255, 0.14) 62%, rgba(0, 0, 0, 0));
+	box-shadow: inset -30px -45px 90px rgba(56, 108, 160, 0.34);
+	opacity: 0.9;
+}
+
+.theme-republic .home-chip {
+	border-color: rgba(31, 126, 206, 0.54);
+	background-color: rgba(170, 218, 255, 0.38);
+	color: #0f63ad;
+}
+
+.theme-republic .home-hero h1 {
+	color: #10365f;
+	text-shadow: 0 8px 40px rgba(42, 109, 176, 0.22);
+}
+
+.theme-republic .home-hero h2 {
+	color: #1d73bc;
+}
+
+.theme-republic .home-description {
+	color: rgba(22, 57, 93, 0.82);
+}
+
+.theme-republic .home-button--primary {
+	color: #f6fbff;
+	background: linear-gradient(180deg, #2d8fe0 0%, #207ac7 100%);
+	box-shadow: 0 12px 28px rgba(33, 116, 187, 0.28);
+}
+
+.theme-republic .home-button--primary:hover {
+	box-shadow: 0 15px 30px rgba(33, 116, 187, 0.36);
+}
+
+.theme-republic .home-button--ghost {
+	color: #195089;
+	border-color: rgba(40, 120, 193, 0.42);
+	background-color: rgba(168, 214, 255, 0.26);
+}
+
 @keyframes pulse-stars {
 	0%,
 	100% {

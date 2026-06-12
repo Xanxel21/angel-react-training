@@ -63,6 +63,23 @@ export default function StarWarsTable() {
 		return "Desconocido";
 	};
 
+	const getCharacterInitials = (name: string) => {
+		const words = name
+			.trim()
+			.split(/\s+/)
+			.filter(Boolean);
+
+		if (words.length === 0) {
+			return "?";
+		}
+
+		if (words.length === 1) {
+			return words[0].charAt(0).toUpperCase();
+		}
+
+		return `${words[0].charAt(0)}${words[1].charAt(0)}`.toUpperCase();
+	};
+
 
 	return (
 		<Container maxWidth="lg" sx={{ py: { xs: 3, md: 6 }, position: "relative", zIndex: 1 }}>
@@ -150,6 +167,7 @@ export default function StarWarsTable() {
 						{filteredCharacters.map((character) => {
 							const genderLabel = toGenderLabel(character.gender);
 							const characterId = characterIdByUrl.get(character.url);
+							const characterInitials = getCharacterInitials(character.name);
 
 							return (
 								<TableRow
@@ -159,7 +177,7 @@ export default function StarWarsTable() {
 								>
 									<TableCell className="starwars-name-cell">
 										<span className="starwars-avatar" aria-hidden="true">
-											::
+											{characterInitials}
 										</span>
 										{character.name}
 									</TableCell>

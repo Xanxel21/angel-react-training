@@ -39,6 +39,23 @@ const normalizeValue = (value: string) => {
 	return value;
 };
 
+const getCharacterInitials = (name: string) => {
+	const words = name
+		.trim()
+		.split(/\s+/)
+		.filter(Boolean);
+
+	if (words.length === 0) {
+		return "?";
+	}
+
+	if (words.length === 1) {
+		return words[0].charAt(0).toUpperCase();
+	}
+
+	return `${words[0].charAt(0)}${words[1].charAt(0)}`.toUpperCase();
+};
+
 function StarWarsDetailPage() {
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -58,6 +75,14 @@ function StarWarsDetailPage() {
 		}
 
 		return toGenderLabel(character.gender);
+	}, [character]);
+
+	const characterInitials = useMemo(() => {
+		if (!character) {
+			return "?";
+		}
+
+		return getCharacterInitials(character.name);
 	}, [character]);
 
 	useEffect(() => {
@@ -113,7 +138,7 @@ function StarWarsDetailPage() {
 			{character ? (
 				<div className="starwars-detail-card">
 					<div className="starwars-detail-hero">
-						<div className="starwars-detail-avatar" aria-hidden="true">◉</div>
+						<div className="starwars-detail-avatar" aria-hidden="true">{characterInitials}</div>
 						<div>
 							<Typography component="h1" className="starwars-detail-name">
 								{character.name}

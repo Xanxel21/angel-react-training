@@ -114,6 +114,122 @@
 	color: #eef6ff;
 }
 
+.theme-empire .starwars-detail-back {
+	color: #ff8da8;
+}
+
+.theme-empire .starwars-detail-back:hover {
+	background-color: rgba(123, 25, 49, 0.26);
+}
+
+.theme-empire .starwars-detail-card {
+	border-color: rgba(168, 58, 84, 0.42);
+	background: linear-gradient(180deg, rgba(35, 6, 14, 0.95), rgba(24, 4, 10, 0.95));
+	box-shadow: 0 20px 48px rgba(9, 2, 4, 0.58);
+}
+
+.theme-empire .starwars-detail-hero {
+	border-bottom-color: rgba(145, 50, 75, 0.36);
+	background: linear-gradient(94deg, rgba(83, 15, 31, 0.82) 0%, rgba(45, 9, 19, 0.75) 100%);
+}
+
+.theme-empire .starwars-detail-avatar {
+	color: #ffbfd0;
+	border-color: rgba(238, 103, 136, 0.86);
+	background: radial-gradient(circle at 30% 28%, rgba(177, 50, 79, 0.48), rgba(74, 13, 29, 0.3));
+}
+
+.theme-empire .starwars-detail-name {
+	color: #ffe3e9;
+}
+
+.theme-empire .starwars-detail-chip {
+	border-color: rgba(255, 122, 152, 0.68);
+	background-color: rgba(115, 19, 42, 0.32);
+	color: #ffb3c5;
+}
+
+.theme-empire .starwars-detail-chip--gold {
+	border-color: rgba(255, 196, 98, 0.7);
+	background-color: rgba(108, 65, 15, 0.24);
+	color: #ffd593;
+}
+
+.theme-empire .starwars-detail-section-title {
+	color: #ff839f;
+}
+
+.theme-empire .starwars-detail-item {
+	border-color: rgba(151, 61, 86, 0.36);
+	background: linear-gradient(180deg, rgba(67, 12, 26, 0.58), rgba(45, 8, 18, 0.7));
+}
+
+.theme-empire .starwars-detail-item-label {
+	color: #dba0ad;
+}
+
+.theme-empire .starwars-detail-item-value {
+	color: #ffe0e7;
+}
+
+.theme-republic .starwars-detail-back {
+	color: #1f6cb0;
+}
+
+.theme-republic .starwars-detail-back:hover {
+	background-color: rgba(101, 164, 223, 0.2);
+}
+
+.theme-republic .starwars-detail-card {
+	border-color: rgba(96, 143, 196, 0.42);
+	background: linear-gradient(180deg, rgba(246, 252, 255, 0.95), rgba(232, 244, 255, 0.95));
+	box-shadow: 0 20px 48px rgba(48, 105, 164, 0.2);
+}
+
+.theme-republic .starwars-detail-hero {
+	border-bottom-color: rgba(90, 135, 183, 0.28);
+	background: linear-gradient(94deg, rgba(197, 228, 255, 0.76) 0%, rgba(221, 240, 255, 0.7) 100%);
+}
+
+.theme-republic .starwars-detail-avatar {
+	color: #1c6ca9;
+	border-color: rgba(49, 150, 224, 0.8);
+	background: radial-gradient(circle at 30% 28%, rgba(131, 198, 248, 0.45), rgba(88, 157, 214, 0.2));
+}
+
+.theme-republic .starwars-detail-name {
+	color: #13395f;
+}
+
+.theme-republic .starwars-detail-chip {
+	border-color: rgba(55, 159, 227, 0.64);
+	background-color: rgba(130, 197, 246, 0.22);
+	color: #1f74b5;
+}
+
+.theme-republic .starwars-detail-chip--gold {
+	border-color: rgba(209, 159, 21, 0.66);
+	background-color: rgba(241, 209, 114, 0.28);
+	color: #845f00;
+}
+
+.theme-republic .starwars-detail-section-title {
+	color: #1e72b3;
+}
+
+.theme-republic .starwars-detail-item {
+	border-color: rgba(98, 146, 198, 0.34);
+	background: linear-gradient(180deg, rgba(241, 250, 255, 0.7), rgba(228, 241, 253, 0.8));
+}
+
+.theme-republic .starwars-detail-item-label {
+	color: #4a6f94;
+}
+
+.theme-republic .starwars-detail-item-value {
+	color: #14385f;
+}
+
 @media (max-width: 900px) {
 	.starwars-detail-hero {
 		padding: 20px;

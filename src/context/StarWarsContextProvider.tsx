@@ -1,10 +1,10 @@
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import { IStarWarsCharacter } from "../interfaces/IStarWarsCharacter";
 import { StarWarsContext, ThemeType } from "./StarWarsContext";
 
 export const StarWarsContextProvider = ({ children }: PropsWithChildren) => {
-    const [ characters, setCharacters ] = useState<IStarWarsCharacter[]>([]);
-    const [ theme , setTheme ] = useState<ThemeType>(() => {
+    const [characters, setCharacters] = useState<IStarWarsCharacter[]>([]);
+    const [theme, setTheme] = useState<ThemeType>(() => {
         const storedTheme = localStorage.getItem('SWTheme');
         return (storedTheme as ThemeType) || 'light';
     })
@@ -12,6 +12,11 @@ export const StarWarsContextProvider = ({ children }: PropsWithChildren) => {
     const handleCharacters = ( chars: IStarWarsCharacter[] ) => {
         setCharacters(chars);
     }
+
+    useEffect(() => {
+        localStorage.setItem('SWTheme', theme);
+        document.body.dataset.theme = theme;
+    }, [theme]);
 
     return (
         <StarWarsContext.Provider

@@ -1,5 +1,4 @@
 import { Suspense, use, useEffect } from "react";
-import "./StarWarsPage.css";
 import Spinner from "../../components/ui/Spinner";
 import { StarWarsContext } from "../../context/StarWarsContext";
 import StarWarsTable from "./ui/StarWarsTable";
