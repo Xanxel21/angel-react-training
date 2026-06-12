@@ -3,6 +3,7 @@ import PublicLayout from "../layouts/PublicLayout";
 import HomePage from "../pages/home/HomePage";
 import StarWarsPage from "../pages/starwars/StarWarsPage";
 import StarWarsDetailPage from "../pages/starwars/StarWarsDetailPage";
+import FavouritesForm from "../pages/favourites/FavouritesForm";
 
 
 export const router = createBrowserRouter([
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/starwars/:characterId",
 				element: <StarWarsDetailPage />,
+			},
+			{
+				path: "/form",
+				element: <FavouritesForm />,
 			},
 		],
 	},
